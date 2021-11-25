@@ -94,7 +94,7 @@ const GameScreen: React.FC<IGameScreenProps> = ({ userChoice, onGameOver }) => {
 		<View style={styles.screen}>
 			<Text style={DefaultStyles.title}>Opponent's Guess</Text>
 			<NumberContainer>{currentGuess}</NumberContainer>
-			<Card style={styles.buttonContainer}>
+			<Card style={{...styles.buttonContainer, marginTop: availableDeviceHeight > 600 ? 20 : 5}}>
 				<MainButton onPress={() => handleNextGuess('lower')}><Ionicons name="md-remove" size={24} color="white" /></MainButton>
 				<MainButton onPress={() => handleNextGuess('greater')}><Ionicons name="md-add" size={24} color="white" /></MainButton>
 			</Card>
@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		marginTop: Dimensions.get('window').height > 600 ? 20 : 5,
 		width: 300,
 		maxWidth: '90%',
 	},
