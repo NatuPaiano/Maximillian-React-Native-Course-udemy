@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { NavigationStackScreenComponent } from 'react-navigation-stack';
 
-const MealDetailScreen: React.FC<NavigationStackScreenProps> = ({ navigation }) => (
+const MealDetailScreen: NavigationStackScreenComponent = ({ navigation }) => (
 	<View style={styles.screen}>
 		<Text>The Meal Detail Screen!</Text>
 		<Button title="go back to Categories" onPress={() => {

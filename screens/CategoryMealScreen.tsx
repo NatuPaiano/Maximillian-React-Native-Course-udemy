@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import { CATEGORIES } from '../data/dummy-data';
 
 interface ICategoryMealScreenParams {
 	categoryId: string,
 };
 
-const CategoryMealScreen = ({ navigation }: NavigationStackScreenProps) => {
+const CategoryMealScreen: NavigationStackScreenComponent<ICategoryMealScreenParams> = ({ navigation }) => {
 	const catId = navigation.getParam('categoryId');
 	const selectedCategory = CATEGORIES.find((category) => category.id === catId);
 
@@ -23,7 +23,7 @@ const CategoryMealScreen = ({ navigation }: NavigationStackScreenProps) => {
 	);
 }
 
-CategoryMealScreen.navigationOptions = ({ navigation }: NavigationStackScreenProps<ICategoryMealScreenParams>) => {
+CategoryMealScreen.navigationOptions = ({ navigation }) => {
 	const catId = navigation.getParam('categoryId');
 	const selectedCategory = CATEGORIES.find((category) => category.id === catId);
 	
