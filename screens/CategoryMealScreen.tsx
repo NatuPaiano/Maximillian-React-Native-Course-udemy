@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, FlatList, ListRenderItemInfo } from 'react-native';
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
-import { CATEGORIES } from '../data/dummy-data';
+import MealItem from '../components/MealItem.ccmponent';
+import { CATEGORIES, MEALS } from '../data/dummy-data';
+import Meal from '../models/meal';
 
 interface ICategoryMealScreenParams {
 	categoryId: string,
@@ -9,16 +11,18 @@ interface ICategoryMealScreenParams {
 
 const CategoryMealScreen: NavigationStackScreenComponent<ICategoryMealScreenParams> = ({ navigation }) => {
 	const catId = navigation.getParam('categoryId');
-	const selectedCategory = CATEGORIES.find((category) => category.id === catId);
+	const displayedMeals = MEALS.filter((meal) => meal.categoryIds.includes(catId));
+	const handleOnSelectMeal = () => {
+		navigation.navigate('MealDetail');
+	};
+
+	const renderMealItem = ({ item }: ListRenderItemInfo<Meal>) => (
+		<MealItem meal={item} onSelect={handleOnSelectMeal}	/>
+	);
 
 	return (
 		<View style={styles.screen}>
-			<Text>The Category Meal Screen!</Text>
-			<Text>{selectedCategory?.title}</Text>
-			<Button title="go to Details" onPress={() => {
-				navigation.navigate('MealDetail');
-			}} />
-			<Button title="go Back" onPress={() => navigation.goBack()} />
+			<FlatList style={styles.mealsList} data={displayedMeals} renderItem={renderMealItem} />
 		</View>
 	);
 }
@@ -37,6 +41,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	mealsList: {
+		width: '100%',
 	},
 });
 
