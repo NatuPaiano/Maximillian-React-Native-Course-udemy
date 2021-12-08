@@ -1,5 +1,5 @@
 
-import { createStackNavigator } from 'react-navigation-stack';
+import { createStackNavigator, NavigationStackScreenComponent } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealScreen from '../screens/CategoryMealScreen';
@@ -10,7 +10,7 @@ import COLORS from '../constants/colors';
 
 const MealsNavigator = createStackNavigator({
 	Categories: CategoriesScreen,
-	CategoryMeals: CategoryMealScreen,
+	CategoryMeals: CategoryMealScreen as NavigationStackScreenComponent,
 	Favorites: FavoritesScreen,
 	MealDetail: MealDetailScreen,
 }, {

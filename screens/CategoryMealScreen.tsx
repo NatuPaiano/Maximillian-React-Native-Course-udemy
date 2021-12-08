@@ -1,23 +1,25 @@
 import React from 'react';
-import { StyleSheet, View, Text, FlatList, ListRenderItemInfo } from 'react-native';
+import { StyleSheet, View, FlatList, ListRenderItemInfo } from 'react-native';
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import MealItem from '../components/MealItem.ccmponent';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
 import Meal from '../models/meal';
 
-interface ICategoryMealScreenParams {
+export interface ICategoryMealScreenParams {
 	categoryId: string,
 };
 
 const CategoryMealScreen: NavigationStackScreenComponent<ICategoryMealScreenParams> = ({ navigation }) => {
 	const catId = navigation.getParam('categoryId');
 	const displayedMeals = MEALS.filter((meal) => meal.categoryIds.includes(catId));
-	const handleOnSelectMeal = () => {
-		navigation.navigate('MealDetail');
-	};
 
 	const renderMealItem = ({ item }: ListRenderItemInfo<Meal>) => (
-		<MealItem meal={item} onSelect={handleOnSelectMeal}	/>
+		<MealItem meal={item} onSelect={() => navigation.navigate({
+			routeName: 'MealDetail',
+			params: {
+				mealId: item.id,
+			},
+		})}	/>
 	);
 
 	return (
