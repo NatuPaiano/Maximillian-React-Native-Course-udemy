@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
+import { DrawerActions } from 'react-navigation-drawer';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import CategoryGridTile from '../components/CategoryGridTile.component';
@@ -25,13 +26,15 @@ const CategoriesScreen: NavigationStackScreenComponent = ({ navigation }) => {
 	);
 };
 
-CategoriesScreen.navigationOptions = {
-	headerTitle: 'Meal Categories',
-	headerLeft: () => (
-		<HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-			<Item title='menu' iconName="ios-menu" onPress={() => {}} ></Item>
-		</HeaderButtons>
-	),
+CategoriesScreen.navigationOptions = ({ navigation }) => {
+	return {
+		headerTitle: 'Meal Categories',
+		headerLeft: () => (
+			<HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+				<Item title='menu' iconName="ios-menu" onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />
+			</HeaderButtons>
+		),
+	};
 };
 
 export default CategoriesScreen;
