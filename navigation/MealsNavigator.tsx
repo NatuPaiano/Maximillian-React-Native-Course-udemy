@@ -11,12 +11,18 @@ import CategoryMealScreen from '../screens/CategoryMealScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
 import FiltersScreen from '../screens/FiltersScreen';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import COLORS from '../constants/colors';
 
 const defaultStackNavOptions = {
 	headerStyle: {
 		backgroundColor: Platform.OS === 'android' ? COLORS.primaryColor : '',
+	},
+	headerTitleStyle: {
+		fontFamily: 'open-sans-bold',
+	},
+	headerBackTitleStyle: {
+		fontFamily: 'open-sans-bold',
 	},
 	headerTintColor: Platform.OS === 'android' ? 'white' : COLORS.primaryColor,
 };
@@ -44,16 +50,17 @@ const tabScreenRoutes: NavigationRouteConfigMap<NavigationMaterialBottomTabOptio
 				<Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor} />
 			),
 			tabBarColor: COLORS.primaryColor,
+			tabBarLabel: Platform.OS === 'android' ? <Text style={{ fontFamily: 'open-sans-bold' }}>Meals</Text> : 'Meals',
 		},
 	},
 	Favorites: { 
 		screen: FavoritesNavigator,
 		navigationOptions: {
-			tabBarLabel: 'Favorites!',
 			tabBarIcon: (tabInfo) => (
 				<Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />
 			),
 			tabBarColor: COLORS.accentColor,
+			tabBarLabel: Platform.OS === 'android' ? <Text style={{ fontFamily: 'open-sans-bold' }}>Favorites</Text> : 'Favorites',
 		},
 	},
 };
@@ -66,6 +73,9 @@ const MealsFavTabNavigator = Platform.OS === 'android'
 : createBottomTabNavigator(tabScreenRoutes,
 	{
 		tabBarOptions: {
+			labelStyle: {
+				fontFamily: 'open-sans',
+			},
 			activeTintColor: COLORS.accentColor,
 	},
 });
