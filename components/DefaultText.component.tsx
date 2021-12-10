@@ -1,8 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle } from 'react-native';
 
-const DefaultText: React.FC = ({ children }) => (
-	<Text style={styles.text}>{children}</Text>
+interface IDefaultText {
+	style?: StyleProp<TextStyle>,
+};
+
+const DefaultText: React.FC<IDefaultText> = ({ children, style }) => (
+	<Text style={[styles.text, style]}>{children}</Text>
 );
 
 const styles = StyleSheet.create({
