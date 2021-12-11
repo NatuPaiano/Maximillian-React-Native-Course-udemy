@@ -74,6 +74,12 @@ const styles = StyleSheet.create({
 		padding: 15,
 		justifyContent: 'space-around',
 	},
+	mealDetail: {
+		paddingHorizontal: 10,
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		height: '15%',
+	},
 	title: {
 		fontFamily: 'open-sans-bold',
 		fontSize: 22,
