@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import { StyleSheet } from 'react-native';
 import { enableScreens } from 'react-native-screens';
 import MealsNavigator from './navigation/MealsNavigator';
-
+//testing git from another device
 export default function App() {
 	enableScreens();
 	const [fontsLoaded] = useFonts({
