@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import MealList from '../components/MealList.component';
-import { CATEGORIES, MEALS } from '../data/dummy-data';
+import { CATEGORIES } from '../data/dummy-data';
+import { useTypedSelector } from '../store/hooks';
 
 export interface ICategoryMealScreenParams {
 	categoryId: string,
@@ -9,7 +10,8 @@ export interface ICategoryMealScreenParams {
 
 const CategoryMealScreen: NavigationStackScreenComponent<ICategoryMealScreenParams> = ({ navigation }) => {
 	const catId = navigation.getParam('categoryId');
-	const displayedMeals = MEALS.filter((meal) => meal.categoryIds.includes(catId));
+	const filteredMeals = useTypedSelector(({ meals }) => meals.filteredMeals);
+	const displayedMeals = filteredMeals.filter((meal) => meal.categoryIds.includes(catId));
 
 	return (
 		<MealList listData={displayedMeals} navigation={navigation} />

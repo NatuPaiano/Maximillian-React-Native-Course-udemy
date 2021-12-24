@@ -4,10 +4,10 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import CustomHeaderButton from '../components/CustomHeaderButton.component';
 import MealList from '../components/MealList.component';
-import { MEALS } from '../data/dummy-data';
+import { useTypedSelector } from '../store/hooks';
 
 const FavoritesScreen: NavigationStackScreenComponent = ({ navigation }) => {
-	const favoriteMeals = MEALS.filter((meal) => meal.id === 'm1' || meal.id === 'm2');
+	const favoriteMeals = useTypedSelector(({ meals }) => meals.favoriteMeals);
 	
 	return (
 		<MealList listData={favoriteMeals} navigation={navigation} />

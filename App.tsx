@@ -4,6 +4,8 @@ import { useFonts } from 'expo-font';
 import { StyleSheet } from 'react-native';
 import { enableScreens } from 'react-native-screens';
 import MealsNavigator from './navigation/MealsNavigator';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default function App() {
 	enableScreens();
@@ -15,7 +17,9 @@ export default function App() {
 	if(!fontsLoaded) return <AppLoading />
 
   return (
-    <MealsNavigator />
+		<Provider store={store}>
+			<MealsNavigator />
+		</Provider>
   );
 }
 
