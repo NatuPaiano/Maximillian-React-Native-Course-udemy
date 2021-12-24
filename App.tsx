@@ -7,6 +7,7 @@ import MealsNavigator from './navigation/MealsNavigator';
 import { Provider } from 'react-redux';
 import store from './store';
 
+//testing git from another device 
 export default function App() {
 	enableScreens();
 	const [fontsLoaded] = useFonts({
