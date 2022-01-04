@@ -17,7 +17,7 @@ const initialState: IMealsState = {
 const mealsReducer = (state = initialState, action: MealsAction): IMealsState => {
 	switch (action.type) {
 		case MealsActionTypes.TOGGLE_FAVORITE:
-			const favoriteMeal = state.favoriteMeals.find((meal) => meal.id === action.id);
+			const favoriteMeal = state.favoriteMeals.find((meal) => meal.id === action.payload.id);
 			if (favoriteMeal) {
 				const updatedFavoriteMeals = state.favoriteMeals.filter((meal) => meal.id !== action.payload.id);
 

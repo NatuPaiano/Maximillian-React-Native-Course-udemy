@@ -18,18 +18,18 @@ const ListItem: React.FC = ({ children }) => (
 const MealDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
 	const allMeals = useTypedSelector(({ meals }) => meals.meals);
 	const dispatch = useDispatch();
-	const mealId = navigation.getParam('mealId');
+	const mealId: string = navigation.getParam('mealId');
 	const selectedMeal = allMeals.find((meal) => meal.id === mealId);
 	const { duration, complexity,	affordability, imageUrl, ingredients, steps } = selectedMeal || {};
 
 	const toggleFavoriteHandler = useCallback(() => {
-		const payload = { mealId };
+		const payload = { id: mealId };
 		dispatch(toggleFavorite(payload));
 	}, [dispatch, mealId]);
 
 	useEffect(() => {
 		navigation.setParams({ toggleFavorite: toggleFavoriteHandler });
-	}, [toggleFavorite]);
+	}, [toggleFavoriteHandler]);
 
 	return (
 		selectedMeal ? (
