@@ -7,7 +7,7 @@ import MealList from '../components/MealList.component';
 import { useTypedSelector } from '../store/hooks';
 
 const FavoritesScreen: NavigationStackScreenComponent = ({ navigation }) => {
-	const favoriteMeals = useTypedSelector(({ meals }) => meals.favoriteMeals);
+	const favoriteMeals = useTypedSelector(({ mealsState }) => mealsState.favoriteMeals);
 	
 	return (
 		<MealList listData={favoriteMeals} navigation={navigation} />

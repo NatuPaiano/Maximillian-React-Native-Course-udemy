@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView, Image } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CustomHeaderButton from '../components/CustomHeaderButton.component';
 import DefaultText from '../components/DefaultText.component';
 import COLORS from '../constants/colors';
@@ -16,7 +16,7 @@ const ListItem: React.FC = ({ children }) => (
 );
 
 const MealDetailScreen: NavigationStackScreenComponent = ({ navigation }) => {
-	const allMeals = useTypedSelector(({ meals }) => meals.meals);
+	const allMeals = useTypedSelector(({ mealsState }) => mealsState.meals);
 	const dispatch = useDispatch();
 	const mealId: string = navigation.getParam('mealId');
 	const selectedMeal = allMeals.find((meal) => meal.id === mealId);

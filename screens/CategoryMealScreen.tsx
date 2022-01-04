@@ -10,7 +10,7 @@ export interface ICategoryMealScreenParams {
 
 const CategoryMealScreen: NavigationStackScreenComponent<ICategoryMealScreenParams> = ({ navigation }) => {
 	const catId = navigation.getParam('categoryId');
-	const filteredMeals = useTypedSelector(({ meals }) => meals.filteredMeals);
+	const filteredMeals = useTypedSelector(({ mealsState }) => mealsState.filteredMeals);
 	const displayedMeals = filteredMeals.filter((meal) => meal.categoryIds.includes(catId));
 
 	return (
