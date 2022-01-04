@@ -2,6 +2,7 @@ import React from 'react';
 import { View, FlatList, StyleSheet, ListRenderItemInfo } from 'react-native';
 import { StackNavigationProp } from 'react-navigation-stack/lib/typescript/src/vendor/types';
 import Meal from '../models/meal';
+import { useTypedSelector } from '../store/hooks';
 import MealItem from './MealItem.ccmponent';
 
 interface IMealListProps {
@@ -10,15 +11,20 @@ interface IMealListProps {
 };
 
 const MealList: React.FC<IMealListProps> = ({ listData, navigation }) => {
-	const renderMealItem = ({ item }: ListRenderItemInfo<Meal>) => (
-		<MealItem meal={item} onSelect={() => navigation.navigate({
-			routeName: 'MealDetail',
-			params: {
-				mealId: item.id,
-				mealTitle: item.title,
-			},
-		})}	/>
-	);
+	const favoriteMeals = useTypedSelector(({ mealsState }) => mealsState.favoriteMeals);
+	const renderMealItem = ({ item }: ListRenderItemInfo<Meal>) => {
+		const isFavorite = favoriteMeals.find((meal) => meal.id === item.id);
+		return (
+			<MealItem meal={item} onSelect={() => navigation.navigate({
+				routeName: 'MealDetail',
+				params: {
+					mealId: item.id,
+					mealTitle: item.title,
+					isFavorite,
+				},
+			})}	/>
+		);
+	};
 
 	return (
 		<View style={styles.list}>
