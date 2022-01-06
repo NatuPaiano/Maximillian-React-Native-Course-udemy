@@ -1,5 +1,6 @@
 import { MEALS } from '../../data/dummy-data';
 import Meal from '../../models/meal';
+import FiltersScreen from '../../screens/FiltersScreen';
 import { MealsAction, MealsActionTypes } from '../actions/meals';
 
 interface IMealsState {
@@ -30,8 +31,29 @@ const mealsReducer = (state = initialState, action: MealsAction): IMealsState =>
 
 				return { ...state, favoriteMeals: [...state.favoriteMeals, meal] };
 			};
-			default:
-				return state;
+		case MealsActionTypes.SET_FILTERS:
+			const { glutenFree, lactoseFree, vegan, vegetarian } = action.payload;
+			let updatedFilteredMeals = state.meals;
+
+			if (glutenFree) {
+				updatedFilteredMeals = updatedFilteredMeals.filter((meal) => meal.isGluttenFree);
+			};
+
+			if (lactoseFree) {
+				updatedFilteredMeals = updatedFilteredMeals.filter((meal) => meal.isLactoseFree);
+			};
+
+			if (vegan) {
+				updatedFilteredMeals = updatedFilteredMeals.filter((meal) => meal.isVegan);
+			};
+
+			if (vegetarian) {
+				updatedFilteredMeals = updatedFilteredMeals.filter((meal) => meal.isVegetarian);
+			};
+
+			return {...state, filteredMeals: updatedFilteredMeals}
+		default:
+			return state;
 		};
 	};
 

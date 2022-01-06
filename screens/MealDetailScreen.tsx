@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView, Image } from 'react-native';
-import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CustomHeaderButton from '../components/CustomHeaderButton.component';
 import DefaultText from '../components/DefaultText.component';
 import COLORS from '../constants/colors';
-import Meal from '../models/meal';
 import { toggleFavorite } from '../store/actions/meals';
 import { useTypedSelector } from '../store/hooks';
 
