@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "es2020": true,
-    "jest": true
+    "jest": true,
+		"react-native/react-native": true
   },
   "extends": [
     "airbnb",
@@ -18,7 +19,7 @@
     "prettier",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier", "jsx-a11y", "@typescript-eslint", "import"],
+  "plugins": ["react", "react-native", "prettier", "jsx-a11y", "@typescript-eslint", "import"],
   "rules": {
     "react/jsx-filename-extension": [
       1,
@@ -32,8 +33,17 @@
     "react/function-component-definition": [2, {
       "namedComponents": "arrow-function"
     }],
+		"react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
+    "react-native/no-single-element-style-arrays": 2,
+    "react-native/sort-styles": 2,
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
+		"import/no-extraneous-dependencies" : ["error", {"devDependencies": true}],
+		"@typescript-eslint/no-use-before-define": ["error", { "functions": true, "classes": true, "variables": false }], // disable the rule for variables, but enable it for functions and classes
     "jsx-a11y/accessible-emoji": "error",
     "jsx-a11y/alt-text": "error",
     "jsx-a11y/anchor-has-content": "error",
