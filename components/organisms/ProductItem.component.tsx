@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from '../../models/product.model';
-import Card, { IActionsProps } from '../molecules/Card.component';
+import Card from '../molecules/Card.component';
 
 const ProductItem = ({ title, price, imageUrl }: Product) => {
   const handleViewDetails = () => {

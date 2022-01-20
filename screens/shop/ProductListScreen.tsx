@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
-import ProductItem from '../../components/organisms/ProductItem';
+import ProductItem from '../../components/organisms/ProductItem.component';
 import PRODUCTS from '../../data/dummy-data';
 import Product from '../../models/product.model';
 import { setProducts } from '../../store/actions/products';

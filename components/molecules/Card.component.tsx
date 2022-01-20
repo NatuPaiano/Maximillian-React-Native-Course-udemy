@@ -35,8 +35,6 @@ const Card = (props: ICardProps) => {
         <DefaultText style={styles.titleText}>{title}</DefaultText>
         <DefaultText style={styles.contentText}>{formattedCurrencyContent}</DefaultText>
       </View>
-      {/* TODO: check what to do with onPress prop if it's optional */}
-      {/* TODO: how to set button's height?? is not recognizing the property or margin either  */}
       {actions.length ? (
         <View style={styles.actionsContainer}>
           {actions.map((action) => (
