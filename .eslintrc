@@ -30,14 +30,20 @@
     "react/prop-types": 0,
     "react/display-name": 0,
     "react/jsx-props-no-spreading": 0,
+		"react/require-default-props": [2, { "ignoreFunctionalComponents": true }], // we should define default props in FC using JS default values because react team is analysing the deprecation of defaultProps
     "react/function-component-definition": [2, {
-      "namedComponents": "arrow-function"
-    }],
+			"namedComponents": "arrow-function"
+			}],
 		"react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 2,
     "react-native/no-color-literals": 2,
-    "react-native/no-raw-text": 2,
+    "react-native/no-raw-text": [2,
+		{
+			"skip": [
+				"DefaultText"
+			]
+		}],
     "react-native/no-single-element-style-arrays": 2,
     "react-native/sort-styles": 2,
     "import/imports-first": ["error", "absolute-first"],

@@ -1,11 +1,22 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import store from './store';
+import ShopNavigator from './navigation/ShopNavigator';
 
 const App = () => {
+  const [fontsLoaded] = useFonts({
+    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  if (!fontsLoaded) return <AppLoading />;
+
   return (
-    <View>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <ShopNavigator />
+    </Provider>
   );
 };
 
