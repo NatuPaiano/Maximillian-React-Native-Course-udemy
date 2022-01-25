@@ -1,11 +1,15 @@
 import React from 'react';
+import { NavigationParams, NavigationScreenProp, NavigationState } from 'react-navigation';
 import Product from '../../models/product.model';
 import Card from '../molecules/Card.component';
 
-const ProductItem = ({ title, price, imageUrl }: Product) => {
-  const handleViewDetails = () => {
-    console.log('VIEW DETAILS PRESSED!');
-  };
+interface IProductItemProps extends Product {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const ProductItem = ({ id, navigation, title, price, imageUrl }: IProductItemProps) => {
+  const handleViewDetails = () =>
+    navigation.navigate('ProductDetail', { productId: id, productTitle: title });
 
   const handleAddToCart = () => {
     console.log('TO CART PRESSED!');

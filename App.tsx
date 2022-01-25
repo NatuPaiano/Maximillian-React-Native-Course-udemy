@@ -2,10 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { enableScreens } from 'react-native-screens';
 import store from './store';
 import ShopNavigator from './navigation/ShopNavigator';
 
 const App = () => {
+  enableScreens();
   // TODO: fix eslint error
   const [fontsLoaded] = useFonts({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
